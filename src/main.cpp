@@ -44,7 +44,7 @@ static QByteArray strLogStart;
 //---------------------------------------------------------------------------
 // _logHandler
 //---------------------------------------------------------------------------
-static void _logHandler (QtMsgType eMsgType, const char* pszMessage)
+static void _logHandler (QtMsgType eMsgType, const QMessageLogContext& context, const QString& msg)
 {
   if (!hLogFile)
   {
@@ -67,7 +67,7 @@ static void _logHandler (QtMsgType eMsgType, const char* pszMessage)
     hLogFile = fopen(strLogFile.constData(), "a");
     if (!hLogFile)
     {
-      qInstallMsgHandler(0);
+      qInstallMessageHandler(0);
       qWarning("Could not open/create log file \"%s\" ! Error %d : %s", strLogFile.constData(), errno, strerror(errno));
       return;
     }
@@ -85,6 +85,7 @@ static void _logHandler (QtMsgType eMsgType, const char* pszMessage)
       , qPrintable(str) );
   }
 
+  const char* pszMessage = qPrintable(msg);
   if (pszMessage && pszMessage[0])
   {
     size_t uiLen = strlen(pszMessage);
@@ -165,7 +166,7 @@ int main (int nArgc, char** ppszArgv)
   fflush(NULL);
 
   strLogStart = Util::timeString();
-  qInstallMsgHandler(_logHandler);
+  qInstallMessageHandler(_logHandler);
 
   // run
   {
@@ -175,7 +176,7 @@ int main (int nArgc, char** ppszArgv)
 
   // close log file
   // at this point, App instance must be destroyed !
-  qInstallMsgHandler(0);
+  qInstallMessageHandler(0);
   if (hLogFile)
   {
     fputs("\n", hLogFile);
