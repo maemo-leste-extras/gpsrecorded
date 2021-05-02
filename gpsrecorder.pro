@@ -31,6 +31,9 @@ TARGET = gpsrecorder
 TEMPLATE = app
 
 CONFIG += warn_off precompile_header release
+CONFIG += link_pkgconfig
+PKGCONFIG += liblocation libtime
+
 #CONFIG += silent
 #CONFIG += debug
 CONFIG(debug, debug|release) {
@@ -41,8 +44,7 @@ CONFIG(debug, debug|release) {
 QT  = core gui dbus
 QT += maemo5
 
-INCLUDEPATH += /usr/include/glib-2.0 /usr/lib/glib-2.0/include
-LIBS        += -lrt -lz -lglib-2.0 -llocation -ltime
+LIBS        += -lrt -lz
 DEFINES     +=
 
 QMAKE_CFLAGS   +=
