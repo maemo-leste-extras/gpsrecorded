@@ -30,6 +30,7 @@
 //***************************************************************************
 
 #include "stable.h"
+#include <cmath>
 
 
 //---------------------------------------------------------------------------
@@ -586,12 +587,12 @@ void WndMain::onLocationFix (Location* pLocation, const LocationFixContainer* pF
 
   // fix properties
   m_pLblFixSatUse->setText(QString::number(fix.cSatUse) + " / " + QString::number(fix.cSatCount));
-  m_pLblFixLat->setText(QString::number((isnan(fix.getLatDeg()) ? 0.0 : fix.getLatDeg()), 'f', 6) + QChar(L'\x00b0'));
-  m_pLblFixLong->setText(QString::number((isnan(fix.getLongDeg()) ? 0.0 : fix.getLongDeg()), 'f', 6) + QChar(L'\x00b0'));
+  m_pLblFixLat->setText(QString::number((std::isnan(fix.getLatDeg()) ? 0.0 : fix.getLatDeg()), 'f', 6) + QChar(L'\x00b0'));
+  m_pLblFixLong->setText(QString::number((std::isnan(fix.getLongDeg()) ? 0.0 : fix.getLongDeg()), 'f', 6) + QChar(L'\x00b0'));
   m_pLblFixAlt->setText(QString::number(fix.hasFields(FIXFIELD_ALT) ? fix.getAlt(settings.getUnitSystem()) : 0.0) + " " + QString(fix.getAltSuffix(settings.getUnitSystem())));
-  m_pLblFixTrack->setText(QString::number((isnan(fix.getTrackDeg()) ? 0.0 : fix.getTrackDeg()), 'f', 1) + QChar(L'\x00b0'));
+  m_pLblFixTrack->setText(QString::number((std::isnan(fix.getTrackDeg()) ? 0.0 : fix.getTrackDeg()), 'f', 1) + QChar(L'\x00b0'));
   m_pLblFixSpeed->setText(QString::number((fix.hasFields(FIXFIELD_SPEED) ? fix.getSpeed(settings.getHorizSpeedUnit()) : 0.0), 'f', 2) + " " + QString(fix.getSpeedSuffix(settings.getHorizSpeedUnit())));
-  m_pLblHorizEp->setText(QString::number((isnan(fix.getHorizEp(settings.getUnitSystem())) ? 0.0 : fix.getHorizEp(settings.getUnitSystem())), 'f', 2) + " " + QString(fix.getHorizEpSuffix(settings.getUnitSystem())));
+  m_pLblHorizEp->setText(QString::number((std::isnan(fix.getHorizEp(settings.getUnitSystem())) ? 0.0 : fix.getHorizEp(settings.getUnitSystem())), 'f', 2) + " " + QString(fix.getHorizEpSuffix(settings.getUnitSystem())));
 
   // miscellaneous
   m_pLblTimeFixed->setText(App::instance()->lastTimeSetup() == 0 ? tr("NO") : tr("YES"));
