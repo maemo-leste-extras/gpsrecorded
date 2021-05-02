@@ -83,7 +83,7 @@ void ExporterSinkCsv::close (void)
 int ExporterSinkCsv::separatorIndex (char cSep)
 {
   const char* pszSeps = ExporterSinkCsv::supportedSeparators();
-  char* psz = strchr(pszSeps, cSep);
+  const char* psz = strchr(pszSeps, cSep);
 
   return !psz ? -1 : int(psz - pszSeps);
 }
