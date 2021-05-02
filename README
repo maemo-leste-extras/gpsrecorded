@@ -1,0 +1,18 @@
+GPS Recorder for Maemo
+
+A GPS data logger for the Maemo platform.
+
+It is written in C++, over the Qt framework and gets GPS data from Maemo's
+liblocation.
+
+Main features:
+* Gather as much information as possible from the GPS subsystem at a desired
+  frequency (time, satellites, fix loss, etc...).
+* Export your saved tracks to KML/KMZ, GPX and/or CSV files in a single
+  operation.
+* Snap and name a position (POI) while recording to see it later on a map.
+* Automatically update system time according to GPS time when it is accurate
+  enough.
+
+Website:
+http://garage.maemo.org/projects/gpsrecorder/
