@@ -1,15 +1,23 @@
 Source: gpsrecorder
 Section: user/navigation
 Priority: extra
-Maintainer: Jean-Charles Lefebvre <polyvertex+gpsrecorder@gmail.com>
-Build-Depends: debhelper (>= 5), libdbus-glib-1-dev, libgconf2-dev, libglib2.0-dev, liblocation-dev, libqt4-dev, libtime-dev, zlib1g-dev
-Standards-Version: 3.7.3
-Homepage: http://garage.maemo.org/projects/gpsrecorder/
-XSBC-Bugtracker: http://garage.maemo.org/tracker/?atid=5769&group_id=1620
+Maintainer: Merlijn Wajer <merlijn@wizzup.org>
+Build-Depends: debhelper (>= 10),
+    libdbus-glib-1-dev,
+    libgconf2-dev,
+    libglib2.0-dev,
+    liblocation-dev,
+    qtbase5-dev,
+    libtime-dev,
+    zlib1g-dev
+Standards-Version: 4.3.0
+Homepage: https://github.com/maemo-leste-extras/gpsrecorder
+XSBC-Bugtracker: https://github.com/maemo-leste-extras/gpsrecorder/issues/
 
 Package: gpsrecorder
-Architecture: armel
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}, qt-platform-maemo
 Description: GPS data logger to KML, GPX and CSV formats
  A GPS data logger for the Maemo platform.
  Main features :
