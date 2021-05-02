@@ -526,7 +526,7 @@ char AppSettings::getCsvSeparator (void)
   QVariant var = m_Settings.value(SETTINGNAME_CSV_SEPARATOR);
   if (var.canConvert(QVariant::Char))
   {
-    char c = var.toChar().toAscii();
+    char c = var.toChar().toLatin1();
 
     if (ExporterSinkCsv::isAllowedSeparator(c))
       return c;
