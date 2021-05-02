@@ -41,9 +41,8 @@ WndBase::WndBase (QMainWindow* pParent/*=0*/)
   Q_ASSERT(App::instance());
   Q_ASSERT(App::instance()->location());
 
-#if QT_VERSION > 0x040503
-  this->setAttribute(Qt::WA_Maemo5StackedWindow);
-#endif
+  setProperty("X-Maemo-StackedWindow", 1);
+  //this->setAttribute(Qt::WA_Maemo5StackedWindow);
 }
 
 //---------------------------------------------------------------------------

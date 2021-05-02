@@ -48,6 +48,7 @@ WndMain::WndMain (QMainWindow* pParent/*=0*/)
   m_pMenuConfig    = this->menuBar()->addAction(tr("Settings"), this, SLOT(onClickedConfig()));
   m_pMenuConvert   = this->menuBar()->addAction(tr("Convert"), this, SLOT(onClickedConvert()));
   m_pMenuAbout     = this->menuBar()->addAction(tr("About"), this, SLOT(onClickedAbout()));
+  this->menuBar()->hide();
 
   this->createWidgets();
   this->clearFixFields();

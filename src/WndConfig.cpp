@@ -181,7 +181,8 @@ void WndConfig::setupControls (void)
     pScrollArea->setWidgetResizable(true);
     pScrollArea->setWidget(pScrollWidget);
     pScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    pScrollArea->setProperty("FingerScrollable", true);
+    //pScrollArea->setProperty("FingerScrollable", true);
+    QScroller::grabGesture(pScrollArea->viewport(), QScroller::LeftMouseButtonGesture);
 
     pRootLayout->setSpacing(1);
     pRootLayout->addWidget(pScrollArea);
