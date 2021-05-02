@@ -1,3 +1,9 @@
+gpsrecorder (1.4.0) unstable; urgency=low
+
+  * Initial Maemo Leste version
+
+ -- Merlijn Wajer <merlijn@wizzup.org>  Sun, 02 May 2021 11:58:47 +0200
+
 gpsrecorder (1.2.230) unstable; urgency=low
 
   * Modified: Project's e-mail and website addresses.
