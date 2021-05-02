@@ -1312,7 +1312,7 @@ bool GPSRFile::dump (const char* pszFile, QString& strDump, bool bIncludeLocatio
     }
     else if (cri.uiId == CHUNK_NEWTRACK)
     {
-      int   iOffset = qint32((qint32*)&pChunk->aData[0]);
+      long iOffset = qintptr((qintptr*)&pChunk->aData[0]);
       char* pszName = (char*)&pChunk->aData[sizeof(qint32)];
 
       strDump += QString(
