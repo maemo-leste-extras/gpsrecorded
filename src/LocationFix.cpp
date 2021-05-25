@@ -293,6 +293,33 @@ const char* LocationFix::getClimbEpSuffix (uint uiUnitSystem) const
   return this->getClimbSuffix(uiUnitSystem);
 }
 
+double LocationFix::getDistance (uint uiUnitSystem, const LocationFix& fix) const
+{
+	const double r_earth = 6371e3; //m
+	double lat1 = getLatDeg() * M_PI/180.0;
+	double lat2 = fix.getLatDeg() * M_PI/180.0;
+	double delta_lat = ((fix.getLatDeg()- getLatDeg()) *  M_PI/180.0)/2;
+	double delta_lon = ((fix.getLongDeg() - getLongDeg()) *  M_PI/180.0)/2;
+	double rad_dist = sin(delta_lat) * sin(delta_lat) + cos(lat1) * cos(lat2) * sin(delta_lon) * sin(delta_lon);
+	double dist_m = r_earth*2*atan2(sqrt(rad_dist), sqrt(1-rad_dist));
+	return uiUnitSystem == UNITSYSTEM_METRIC ? dist_m : dist_m*0.621371192237;
+}
+
+const char* LocationFix::getDistanceSuffix (uint uiUnitSystem) const
+{
+  switch (uiUnitSystem)
+  {
+    case UNITSYSTEM_METRIC :
+      return "km";
+    case UNITSYSTEM_IMPERIAL :
+      return "mi";
+
+    default :
+      Q_ASSERT(0);
+      return "?";
+  }
+}
+
 //---------------------------------------------------------------------------
 // getSat
 //---------------------------------------------------------------------------

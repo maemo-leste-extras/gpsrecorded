@@ -169,6 +169,9 @@ void WndMain::createWidgets (void)
 
   m_pLblFixSpeed = new QLabel();
   m_pLblFixSpeed->setDisabled(true);
+  
+  m_pLblDistance = new QLabel();
+  m_pLblDistance->setDisabled(true);
 
   m_pLblTimeFixed = new QLabel();
   m_pLblTimeFixed->setDisabled(true);
@@ -242,6 +245,7 @@ void WndMain::showFix (void)
   pForm2->addRow(tr("Speed :"),  m_pLblFixSpeed);
 
   pForm3->setSpacing(8);
+  pForm3->addRow(tr("Distance:"), m_pLblDistance);
   pForm3->addRow(tr("Time setup :"), m_pLblTimeFixed);
   pForm3->addRow(tr("Waypoints :"), m_pLblFixesWritten);
   pForm3->addRow(tr("Last waypoint :"), m_pLblLastWrittenFixTime);
@@ -297,6 +301,7 @@ void WndMain::clearFixFields (void)
 
   m_pLblTimeFixed->clear();
   m_pLblFixesWritten->clear();
+  m_pLblDistance->clear();
   m_pLblLastWrittenFixTime->clear();
 
   m_pLblHorizEp->clear();
@@ -597,6 +602,7 @@ void WndMain::onLocationFix (Location* pLocation, const LocationFixContainer* pF
   // miscellaneous
   m_pLblTimeFixed->setText(App::instance()->lastTimeSetup() == 0 ? tr("NO") : tr("YES"));
   m_pLblFixesWritten->setText(QString::number(App::instance()->fixesWritten()));
+  m_pLblDistance->setText(QString::number(App::instance()->distance()) + " km");
   if (!App::instance()->lastWrittenFixTime())
     m_pLblLastWrittenFixTime->clear();
   else

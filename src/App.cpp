@@ -59,6 +59,9 @@ App::App (int& nArgc, char** ppszArgv)
   m_uiSystemTimeSetup = 0;
   m_uiFixesWritten    = 0;
   m_uiLastFixWrite    = 0;
+  m_uiDistance = 0;
+  m_firstFix            = true;
+  
 
   // load pixmaps
   m_pPixCellModeNone     = new QPixmap(":/icons/cellmode-none-170.png");
@@ -293,6 +296,8 @@ bool App::setState (App::State eNewState)
       }
 
       m_uiFixesWritten = 0;
+      m_uiDistance = 0;
+      m_firstFix = true;
       m_uiLastFixWrite = 0;
 
       // open/create file
@@ -501,6 +506,8 @@ void App::closeGPSRFile (void)
   }
 
   m_uiFixesWritten = 0;
+  m_uiDistance = 0;
+  m_firstFix = true;
 }
 
 //---------------------------------------------------------------------------
@@ -681,6 +688,20 @@ void App::onLocationFix (Location* pLocation, const LocationFixContainer* pFixCo
     if (bCanLog)
     {
       ++m_uiFixesWritten;
+      if (m_firstFix)
+      {
+          m_firstFix = false;
+          m_lastFix = *pFixCont->getFix();
+      }
+      else
+      {
+          double distance = pFixCont->getFix()->getDistance(UNITSYSTEM_METRIC, m_lastFix);
+          if(distance > 10)
+          {
+              m_uiDistance += distance/1000;
+              m_lastFix = *pFixCont->getFix();
+          }
+      }
       m_uiLastFixWrite = pFixCont->getFix()->uiTime;
       m_GPSRFile.writeLocationFix(pFixCont->getFix()->uiTime, *pFixCont);
     }
