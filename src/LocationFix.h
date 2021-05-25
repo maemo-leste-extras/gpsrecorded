@@ -143,6 +143,8 @@ struct LocationFix
   const char* getClimbSuffix   (uint uiUnitSystem) const;
   double      getClimbEp       (uint uiUnitSystem) const;
   const char* getClimbEpSuffix (uint uiUnitSystem) const;
+  double      getDistance       (uint uiUnitSystem, const LocationFix& fix) const;
+  const char* getDistanceSuffix (uint uiUnitSystem) const;
 
   const LocationFixSat* getSat (fxuint8 cSatIndex) const;
 

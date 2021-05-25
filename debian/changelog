@@ -1,3 +1,9 @@
+gpsrecorder (1.4.1) unstable; urgency=low
+
+  * Add track distance display
+
+ -- uvos <devnull@uvos.xyz>  Tue, 25 May 2021 21:50:00 +0100
+
 gpsrecorder (1.4.0) unstable; urgency=low
 
   * Initial Maemo Leste version

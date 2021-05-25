@@ -80,6 +80,7 @@ public :
 
   time_t lastTimeSetup      (void) const { return m_uiSystemTimeSetup; }
   uint   fixesWritten       (void) const { return m_uiFixesWritten; }
+  double distance           (void) const { return m_uiDistance; }
   time_t lastWrittenFixTime (void) const { return m_uiLastFixWrite; }
 
   WndMain*  wndMain  (void) { return m_pWndMain; }
@@ -156,10 +157,13 @@ private :
   State  m_eState;
   time_t m_uiSystemTimeSetup; // last time the system time has been setup
 
-  GPSRFile m_GPSRFile;
-  uint     m_uiFixesWritten;
-  time_t   m_uiLastFixWrite;
-
+  GPSRFile    m_GPSRFile;
+  uint        m_uiFixesWritten;
+  double      m_uiDistance;
+  time_t      m_uiLastFixWrite;
+  LocationFix m_lastFix;
+  bool        m_firstFix;
+  
   QMaemoBattery m_Batt;
 };
 
