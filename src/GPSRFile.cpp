@@ -101,6 +101,7 @@ TRANSPORTNAMES[] =
   { GPSRFile::MEANSTRANSPORT_SHIP,         QT_TR_NOOP("Ship") },
   { GPSRFile::MEANSTRANSPORT_FERRY,        QT_TR_NOOP("Ferry") },
   { GPSRFile::MEANSTRANSPORT_CARGO,        QT_TR_NOOP("Cargo") },
+  { GPSRFile::MEANSTRANSPORT_SWIM,         QT_TR_NOOP("Swimming") },
 
   { GPSRFile::MEANSTRANSPORT_PLANE,        QT_TR_NOOP("Plane") },
   { GPSRFile::MEANSTRANSPORT_SEAPLANE,     QT_TR_NOOP("Seaplane") },

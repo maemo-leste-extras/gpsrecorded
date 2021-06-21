@@ -132,7 +132,7 @@ void WndSat::onLocationFix (Location* pLocation, const LocationFixContainer* pFi
         QString("#%1  %2 dBHz%3")
         .arg(fixSat.iPRN)
         .arg((int)fixSat.cSignalStrength)
-        .arg(fixSat.bInUse ? QString("  (%3°, %4°)").arg((int)fixSat.cElevation).arg((int)fixSat.wAzimuth) : "") );
+        .arg(fixSat.bInUse ? QString("  (%3 deg, %4 deg)").arg((int)fixSat.cElevation).arg((int)fixSat.wAzimuth) : "") );
     }
   }
 
