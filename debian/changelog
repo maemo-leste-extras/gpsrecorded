@@ -1,3 +1,11 @@
+gpsrecorder (1.4.2) unstable; urgency=low
+
+  * Add swimming to means of transportation
+  * Work around broken degree sign in some fonts
+
+ -- uvos <devnull@uvos.xyz>  Tue, 21 Jun 2021 21:50:00 +0100
+
+
 gpsrecorder (1.4.1) unstable; urgency=low
 
   * Add track distance display
