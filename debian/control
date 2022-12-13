@@ -10,7 +10,6 @@ Build-Depends: debhelper (>= 10),
     qtbase5-dev,
     libtime-dev,
     zlib1g-dev,
-    qt5-default,
     libqt5x11extras5-dev,
     libqt5maemo5-dev,
 Standards-Version: 4.3.0
