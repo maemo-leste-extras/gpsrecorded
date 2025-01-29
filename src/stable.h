@@ -58,13 +58,7 @@
 //
 // INCLUDEPATH += /usr/include/glib-2.0 /usr/lib/glib-2.0/include
 // LIBS        += -lglib-2.0 -llocation
-#ifdef __cplusplus
-extern "C" {
-#endif
 #include <glib.h>
-#ifdef __cplusplus
-}
-#endif
 
 // maemo - location
 //
